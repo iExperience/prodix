@@ -1,0 +1,26 @@
+<h1>Viewing project <%= @project.name %></h1>
+
+<p>This project's tasks:</p>
+<ol>
+  <% @project.tasks.each do |task| %>
+    <li>
+      <%= task.name %>
+      <% if task.due_date %>
+        due at <%= task.due_date.strftime("%c") %>
+      <% else %>
+        never due!
+      <% end %>
+    </li>
+  <% end %>
+</ol>
+
+<p>Create A Task</p>
+<%= form_for(@task) do |f| %>
+  <input type="hidden" value="<%= @project.id %>"
+    name="task[project_id]">
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :due_date %>
+  <%= f.date_field :due_date %>
+  <%= f.submit "Create!" %>
+<% end %>

@@ -1,0 +1,18 @@
+<h1>Welcome</h1>
+
+<p>Your projects:</p>
+<ol>
+  <% @projects.each do |project| %>
+    <li><%= link_to project.name, project %></li>
+  <% end %>
+</ol>
+
+<p>Create A Project</p>
+<%= form_for(@project) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit "Create!" %>
+<% end %>
+
+<%= link_to "Logout", destroy_user_session_path,
+  method: :delete %>
