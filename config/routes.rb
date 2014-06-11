@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   # get '/projects/:id' => 'projects#show'
   # post '/projects' => 'projects#create'
 
+  get '/projects' => 'projects#index'
+
   resources :tasks, only: [:create, :show]
 
   # resources :users ...

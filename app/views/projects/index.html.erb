@@ -1,11 +1,13 @@
 <h1>Welcome</h1>
 
-<p>Your projects:</p>
-<ol>
-  <% @projects.each do |project| %>
-    <li><%= link_to project.name, project %></li>
-  <% end %>
-</ol>
+<%= form_tag "/projects", method: "GET" do %>
+  <%= text_field_tag 'q', params[:q] %>
+  <%= submit_tag 'SEARCH' %>
+<% end %>
+
+<div id="projects">
+  <%=render "projects" %>
+</div>
 
 <p>Create A Project</p>
 <%= form_for(@project) do |f| %>

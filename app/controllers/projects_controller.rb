@@ -2,7 +2,8 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @projects = current_user.projects
+    #@projects = current_user.projects
+    @projects = Project.search(params[:q]).paginate(:page => params[:page], :per_page => 10)
     @project = Project.new
   end
 

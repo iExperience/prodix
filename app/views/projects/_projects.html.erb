@@ -1,0 +1,8 @@
+  <p>Your projects:</p>
+  <ol>
+    <% @projects.each do |project| %>
+      <li><%= link_to project.name, project %></li>
+    <% end %>
+  </ol>
+
+  <%= will_paginate @projects %>
